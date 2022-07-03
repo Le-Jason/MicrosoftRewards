@@ -1,18 +1,12 @@
 import time
 import pyautogui
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from start import *
-import os
 
 pyautogui.PAUSE = 0.01
 
 class Bot:
     def __init__(self):
-        self.browser = 1
-    
-    def search(self):
-        self.tab()
+        self.aStore = 0
+        self.bStore = 0
 
     def imageFind(self,image,g,double):
     #Finds the image and clicks on it(This was made by https://www.youtube.com/watch?v=GYw_voBfawA NOT ME)
@@ -20,9 +14,11 @@ class Bot:
         b = 0
         while(a==0 and b==0):
             try:
-                im = pyautogui.locateCenterOnScreen(image,confidence=0.65,grayscale=g)
+                im = pyautogui.locateCenterOnScreen(image,confidence=0.8,grayscale=g)
                 a = im[0]
                 b = im[1]
+                self.aStore = a
+                self.bStore = b
             except TypeError:
                 pass
         if double == True:
